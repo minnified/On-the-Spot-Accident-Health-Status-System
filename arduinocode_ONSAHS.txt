@@ -1,0 +1,70 @@
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+// ---------------- DS18B20 ----------------
+#define ONE_WIRE_BUS 4
+
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+
+// ---------------- ECG ----------------
+#define ECG_PIN 34
+#define LO_PLUS 26
+#define LO_MINUS 27
+
+// ---------------- HBT-V2 Pulse Sensor ----------------
+#define PULSE_PIN 35
+
+int pulseValue;
+int bpm = 0;
+
+float temperatureC;
+
+void setup()
+{
+  Serial.begin(115200);
+
+  // DS18B20
+  sensors.begin();
+
+  // ECG
+  pinMode(LO_PLUS, INPUT);
+  pinMode(LO_MINUS, INPUT);
+
+  // Pulse Sensor
+  pinMode(PULSE_PIN, INPUT);
+
+  Serial.println("System Ready");
+}
+
+void loop()
+{
+  // -------- TEMPERATURE --------
+  sensors.requestTemperatures();
+  temperatureC = sensors.getTempCByIndex(0);
+
+  // -------- ECG --------
+  int ecgValue = analogRead(ECG_PIN);
+
+  // -------- PULSE SENSOR --------
+  pulseValue = analogRead(PULSE_PIN);
+
+  // Approximate BPM calculation
+  bpm = map(pulseValue, 0, 4095, 60, 120);
+
+  // -------- SERIAL MONITOR OUTPUT --------
+  Serial.print("ECG: ");
+  Serial.print(ecgValue);
+
+  Serial.print(" | Pulse: ");
+  Serial.print(pulseValue);
+
+  Serial.print(" | BPM: ");
+  Serial.print(bpm);
+
+  Serial.print(" | Temp: ");
+  Serial.print(temperatureC);
+  Serial.println(" C");
+
+  delay(200);
+}

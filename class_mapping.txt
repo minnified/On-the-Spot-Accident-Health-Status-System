@@ -1,0 +1,3 @@
+0:critical augmented
+1:mild augmented
+2:moderate augmented
