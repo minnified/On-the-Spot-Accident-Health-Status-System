@@ -1,4 +1,4 @@
-# ResQNet
+
 AI-powered accident severity classification using ResNet-50, integrated with ESP32-based real-time vital sign monitoring and GPS location sharing to support rapid emergency triage and response.
 is an integrated emergency response platform that combines IoT medical sensors, AI-based injury classification, and a multi-role web ecosystem. The system is designed to minimize response time and provide paramedics/admins with critical patient data before they even arrive on the scene.
 
