@@ -3,8 +3,9 @@ import time
 import os
 
 # ================== CONFIG ==================
-USER_BOT_TOKEN = "8531499027:AAHIu6AMkHAyb9_z1Nnz_7QsIBsZdtGxHrs"#change when being developed on a new phone
-DRIVER_BOT_TOKEN = "8796098383:AAEZkBM2Xhy3hFOedEftEBI7XHzvdlZVfXM"#change when being developed on a new phone
+#created with telegram bots
+USER_BOT_TOKEN = " "#change when being developed on a new phone
+DRIVER_BOT_TOKEN = " "#change when being developed on a new phone
 
 USER_API = f"https://api.telegram.org/bot{USER_BOT_TOKEN}"
 DRIVER_API = f"https://api.telegram.org/bot{DRIVER_BOT_TOKEN}"
